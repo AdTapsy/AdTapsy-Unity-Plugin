@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 For Latest SDK integration Guide open
 https://app.adtapsy.com/app/integration
+=======
+For Latest Unity Plugin Integration Guide open
+https://adtapsy.desk.com/customer/portal/articles/1667436-unity-2d-3d-plugin-integration
+>>>>>>> origin/master
 
 App Monetization. Maximized.
 7 highest paying ad networks in single SDK (Admob, Inmobi, Charboost, Revmob, Applovin, Vungle and AdColony)
