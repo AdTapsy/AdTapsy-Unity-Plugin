@@ -25,6 +25,7 @@ public class AdTapsyIOS : MonoBehaviour
 			if(instance == null)
 			{
 				instance = new GameObject("AdTapsyIOS").AddComponent<AdTapsyIOS>();
+				GameObject.DontDestroyOnLoad(instance.gameObject);
 			}
 		}
 	}

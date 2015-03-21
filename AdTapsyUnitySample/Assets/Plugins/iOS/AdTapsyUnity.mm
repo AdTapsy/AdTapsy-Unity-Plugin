@@ -48,8 +48,6 @@ extern UIViewController* UnityGetGLViewController();
 void AdTapsyStartSession(const char* appId) {
     printf("[AdTapsy Unity] Start Session\n");
     [AdTapsy startSession: CreateNSString(appId)];
-    AdTapsyDelegateImpl * obj = [[AdTapsyDelegateImpl alloc] init];
-    [AdTapsy setDelegate: obj];
 }
 
 void AdTapsySetTestMode(BOOL testModeEnabled, const char** deviceIds) {
