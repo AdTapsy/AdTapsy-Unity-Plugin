@@ -12,6 +12,10 @@ public class AdTapsyIOS : MonoBehaviour
     [DllImport ("__Internal")]
     public static extern void AdTapsyShowInterstitial();
 
+
+    [DllImport ("__Internal")]
+    public static extern bool AdTapsyIsAdReadyToShow();
+
 	[DllImport ("__Internal")]
 	public static extern void AdTapsySetTestMode(bool enabled, params string[] testDevices);
 
@@ -62,7 +66,23 @@ public class AdTapsyIOS : MonoBehaviour
         }
 #endif
     }
+
+	public static bool isAdReadyToShow(){
 #if UNITY_IPHONE
+		return AdTapsyIsAdReadyToShow();
+#else
+		return false;
+#endif
+	}
+
+
+#if UNITY_IPHONE
+	public void OnAdCached( string empty )
+	{
+		Debug.Log("**** OnAdCached ***!");
+		AdTapsy.OnAdCached.Invoke();
+	}
+	
 	public void OnAdShown( string empty )
 	{
 		Debug.Log("**** OnAdShown ***!");

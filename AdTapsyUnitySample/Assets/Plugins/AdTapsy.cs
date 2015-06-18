@@ -11,11 +11,12 @@ using System.Collections;
 
 public class AdTapsy : MonoBehaviour {
 	public delegate void ATDelegate();
+	public static ATDelegate OnAdCached = delegate {};
 	public static ATDelegate OnAdShown = delegate {};
 	public static ATDelegate OnAdSkipped = delegate {};
 	public static ATDelegate OnAdClicked  = delegate {};
 	public static ATDelegate OnAdFailedToShow  = delegate {};
-	
+
 	public static void StartSessionAndroid(string appId){
 #if UNITY_ANDROID
 		AdTapsyAndroid.StartSession(appId);
@@ -45,10 +46,21 @@ public class AdTapsy : MonoBehaviour {
 		AdTapsyIOS.ShowInterstitial ();
 #endif
 	}
+	
+	public static bool isAdReadyToShow(){
+#if UNITY_ANDROID
+		return AdTapsyAndroid.isAdReadyToShow();
+#endif
+#if UNITY_IPHONE
+		return AdTapsyIOS.isAdReadyToShow();
+#endif
+	}
+	
 	public static bool CloseAd(){
 #if UNITY_ANDROID
 		return AdTapsyAndroid.CloseAd();
-#endif
+#else
 		return false;
+#endif
 	}
 }

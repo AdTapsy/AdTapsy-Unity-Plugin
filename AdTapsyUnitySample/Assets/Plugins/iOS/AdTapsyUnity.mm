@@ -4,7 +4,7 @@
 //
 //  Created by Borislav Gizdov on 8/18/14.
 //  Copyright (c) 2014 AdTapsy Ltd. All rights reserved.
-//	<support@adtapsy.com>
+//  <support@adtapsy.com>
 //
 
 #import "AdTapsyUnity.h"
@@ -47,7 +47,11 @@ extern UIViewController* UnityGetGLViewController();
 // Start AdTapsy session for app id
 void AdTapsyStartSession(const char* appId) {
     printf("[AdTapsy Unity] Start Session\n");
+    [AdTapsy setEngine: @"unity"];
     [AdTapsy startSession: CreateNSString(appId)];
+    AdTapsyDelegateImpl * delegate = [[AdTapsyDelegateImpl alloc] init];
+    delegate = (__bridge AdTapsyDelegateImpl *) (__bridge_retained void *) delegate;
+    [AdTapsy setDelegate: delegate];
 }
 
 void AdTapsySetTestMode(BOOL testModeEnabled, const char** deviceIds) {
@@ -61,8 +65,19 @@ void AdTapsyShowInterstitial() {
     [AdTapsy showInterstitial: UnityGetGLViewController()];
 }
 
+bool AdTapsyIsAdReadyToShow() {
+    return [AdTapsy isAdReadyToShow];
+}
+
 
 @implementation AdTapsyDelegateImpl
+
+/**
+ * Called when ad is cached and ready to be shown
+ */
+- (void) adtapsyDidCachedAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdCached", "");
+}
 
 /**
  * Called when ad shown successfuly

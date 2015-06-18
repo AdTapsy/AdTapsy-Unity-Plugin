@@ -32,8 +32,16 @@ public static class AdTapsyAndroid {
 	public static bool CloseAd(){
 		#if UNITY_ANDROID
 		return getAdTapsy().CallStatic<bool>("closeAd");
-		#endif
+		#else
 		return false;
+		#endif
+	}
+	public static bool isAdReadyToShow(){
+		#if UNITY_ANDROID
+		return getAdTapsy().CallStatic<bool>("isAdReadyToShow");
+		#else
+		return false;
+		#endif
 	}
 	#if UNITY_ANDROID
 	private static AndroidJavaObject getCurrentActivity(){
@@ -65,6 +73,9 @@ public static class AdTapsyAndroid {
 		}
 		void onAdFailToShow(){
 			AdTapsy.OnAdFailedToShow.Invoke ();
+		}
+		void onAdCached(){
+			AdTapsy.OnAdCached.Invoke ();
 		}
 	}
 	#endif

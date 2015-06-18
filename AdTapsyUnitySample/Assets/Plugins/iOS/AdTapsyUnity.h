@@ -15,10 +15,17 @@ extern "C" {
     void AdTapsyShowInterstitial();
     
     void AdTapsySetTestMode(BOOL testModeEnabled, const char** deviceIds);
+    
+    bool AdTapsyIsAdReadyToShow();
 }
 
 
 @interface AdTapsyDelegateImpl: NSObject<AdTapsyDelegate>
+
+/**
+ * Called when ad is cached and ready to be shown
+ */
+- (void) adtapsyDidCachedAd;
 
 /**
  * Called when ad shown successfuly
