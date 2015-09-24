@@ -65,8 +65,39 @@ void AdTapsyShowInterstitial() {
     [AdTapsy showInterstitial: UnityGetGLViewController()];
 }
 
-bool AdTapsyIsAdReadyToShow() {
-    return [AdTapsy isAdReadyToShow];
+// Show rewarded video ad
+void AdTapsyShowRewardedVideo() {
+    printf("[AdTapsy Unity] Show Rewarded Video\n");
+    [AdTapsy showRewardedVideo: UnityGetGLViewController()];
+}
+
+bool AdTapsyIsInterstitialReadyToShow() {
+    return [AdTapsy isInterstitialReadyToShow];
+}
+
+bool AdTapsyIsRewardedVideoReadyToShow() {
+    return [AdTapsy isRewardedVideoReadyToShow];
+}
+
+void AdTapsySetRewardedVideoAmount(int amount) {
+    printf("[AdTapsy Unity] Set Rewarded Video Amount\n");
+    [AdTapsy setRewardedVideoAmount:amount];
+}
+
+void AdTapsySetRewardedVideoPrePopupEnabled(BOOL toShow) {
+    printf("[AdTapsy Unity] Set Rewarded Video Pre Popupe\n");
+    [AdTapsy setRewardedVideoPrePopupEnabled:toShow];
+}
+
+void AdTapsySetRewardedVideoPostPopupEnabled(BOOL toShow) {
+    printf("[AdTapsy Unity] Set Rewarded Video Post Popup\n");
+    [AdTapsy setRewardedVideoPostPopupEnabled:toShow];
+}
+
+
+void AdTapsySetUserIdentifier(const char* userId) {
+    printf("[AdTapsy Unity] Set User ID\n");
+    [AdTapsy setUserIdentifier: CreateNSString(userId)];
 }
 
 
@@ -75,36 +106,81 @@ bool AdTapsyIsAdReadyToShow() {
 /**
  * Called when ad is cached and ready to be shown
  */
-- (void) adtapsyDidCachedAd {
-    UnitySendMessage("AdTapsyIOS", "OnAdCached", "");
+- (void) adtapsyDidCachedInterstitialAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdCached", "0");
 }
 
 /**
  * Called when ad shown successfuly
  */
-- (void) adtapsyDidShowAd {
-    UnitySendMessage("AdTapsyIOS", "OnAdShown", "");
+- (void) adtapsyDidShowInterstitialAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdShown", "0");
 }
 
 /**
  * Called when ad failed to show. All used ad networks has no fill.
  */
-- (void) adtapsyDidFailedToShowAd {
-    UnitySendMessage("AdTapsyIOS", "OnAdFailedToShow", "");
+- (void) adtapsyDidFailedToShowInterstitialAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdFailedToShow", "0");
 }
 
 /**
  * Called when user clicked on ad
  */
-- (void) adtapsyDidClickedAd {
-    UnitySendMessage("AdTapsyIOS", "OnAdClicked", "");
+- (void) adtapsyDidClickedInterstitialAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdClicked", "0");
 }
 
 /**
  * Called when user skipped ad (clicked X button to close)
  */
-- (void) adtapsyDidSkippedAd {
-    UnitySendMessage("AdTapsyIOS", "OnAdSkipped", "");
+- (void) adtapsyDidSkippedInterstitialAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdSkipped", "0");
 }
+
+/**
+ * Called when ad is cached and ready to be shown
+ */
+- (void) adtapsyDidCachedRewardedVideoAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdCached", "1");
+}
+
+/**
+ * Called when ad shown successfuly
+ */
+- (void) adtapsyDidShowRewardedVideoAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdShown", "1");
+}
+
+/**
+ * Called when ad failed to show. All used ad networks has no fill.
+ */
+- (void) adtapsyDidFailedToShowRewardedVideoAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdFailedToShow", "1");
+}
+
+/**
+ * Called when user clicked on ad
+ */
+- (void) adtapsyDidClickedRewardedVideoAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdClicked", "1");
+}
+
+/**
+ * Called when user skipped ad (clicked X button to close)
+ */
+- (void) adtapsyDidSkippedRewardedVideoAd {
+    UnitySendMessage("AdTapsyIOS", "OnAdSkipped", "1");
+}
+
+/**
+ * Called when user earned reward for video view
+ */
+-(void) adtapsyDidEarnedReward:(BOOL) success andAmount:(int) amount {
+    char str[10];
+    sprintf(str, "%d", amount);
+    UnitySendMessage("AdTapsyIOS", "OnRewardEarned", str);
+}
+
 @end
 
