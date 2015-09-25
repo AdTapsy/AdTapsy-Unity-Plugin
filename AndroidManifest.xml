@@ -79,7 +79,7 @@
 		    android:exported="false" />
 		<!-- RevMob -->
 		<activity
-		    android:name="com.revmob.ads.fullscreen.FullscreenActivity"
+		    android:name="com.revmob.FullscreenActivity"
 		    android:configChanges="keyboardHidden|orientation"
 		    android:theme="@android:style/Theme.Translucent" />
 
