@@ -40,10 +40,19 @@
 
 		<!-- InMobi Activities -->
 		<activity
-		    android:name="com.inmobi.androidsdk.IMBrowserActivity"
+		    android:name="com.inmobi.rendering.InMobiAdActivity"
 		    android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
 		    android:hardwareAccelerated="true"
 		    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		
+		<receiver
+		android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+		android:enabled="true"
+		android:exported="true" >
+			<intent-filter>
+				<action android:name="com.inmobi.share.id" />
+			</intent-filter>
+		</receiver>
 
 		<!-- AdColony Activities -->
 		<activity
@@ -73,10 +82,7 @@
 		    android:name="com.vungle.publisher.FullScreenAdActivity"
 		    android:configChanges="keyboardHidden|orientation|screenSize"
 		    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-
-		<service
-		    android:name="com.vungle.publisher.VungleService"
-		    android:exported="false" />
+ 
 		<!-- RevMob -->
 		<activity
 		    android:name="com.revmob.FullscreenActivity"
