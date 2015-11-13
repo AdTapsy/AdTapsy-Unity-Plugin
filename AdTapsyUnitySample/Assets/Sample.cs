@@ -80,7 +80,7 @@ public class Sample : MonoBehaviour {
 			UnityEngine.Debug.Log("***AdTapsy reward earned " + amount + "***");  
 		};
 
-		AdTapsy.StartSessionAndroid ("53a412dde4b01470c1f0321e");
+		AdTapsy.StartSessionAndroid ("54982cf7e4b052cd2a20a7b8");
 		AdTapsy.StartSessionIOS ("539777bae4b02eacca4bcb67");
 	}
 
