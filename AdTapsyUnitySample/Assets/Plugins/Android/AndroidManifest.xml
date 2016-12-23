@@ -54,19 +54,14 @@
 			</intent-filter>
 		</receiver>
 
-		<!-- AdColony Activities -->
-		<activity
-		    android:name="com.jirbo.adcolony.AdColonyOverlay"
-		    android:configChanges="keyboardHidden|orientation|screenSize"
-		    android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-		<activity
-		    android:name="com.jirbo.adcolony.AdColonyFullscreen"
-		    android:configChanges="keyboardHidden|orientation|screenSize"
-		    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-		<activity
-		    android:name="com.jirbo.adcolony.AdColonyBrowser"
-		    android:configChanges="keyboardHidden|orientation|screenSize"
-		    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+<!-- AdColony Activities -->
+		<activity android:name="com.adcolony.sdk.AdColonyInterstitialActivity"
+		android:configChanges="keyboardHidden|orientation|screenSize"
+		android:hardwareAccelerated="true"/>
+		
+		<activity android:name="com.adcolony.sdk.AdColonyAdViewActivity"
+		android:configChanges="keyboardHidden|orientation|screenSize"
+		android:hardwareAccelerated="true"/>
 		<!-- Applovin Activities -->
 		<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
 		<activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
@@ -77,11 +72,14 @@
 		    android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
 		    android:theme="@android:style/Theme.Translucent" />
 
-		<!-- Vungle -->
-		<activity
-		    android:name="com.vungle.publisher.FullScreenAdActivity"
-		    android:configChanges="keyboardHidden|orientation|screenSize"
-		    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+		        <!-- Vungle -->
+		<activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
+		 android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+		 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/> 
+		 <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+ android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+ android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+
  
 		<!-- RevMob -->
 		<activity
