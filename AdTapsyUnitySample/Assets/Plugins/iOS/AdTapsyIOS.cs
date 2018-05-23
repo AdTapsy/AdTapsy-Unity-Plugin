@@ -36,6 +36,13 @@ public class AdTapsyIOS : MonoBehaviour
 	[DllImport ("__Internal")]
 	public static extern void AdTapsySetUserIdentifier(string userId);
 
+	[DllImport ("__Internal")]
+	public static extern void AdTapsySetUserSubjectToGdpr(bool value);
+
+	[DllImport ("__Internal")]
+	public static extern void AdTapsySetConsentGrantedGdpr(bool value);
+
+
 	private static AdTapsyIOS instance;
 	
 	private static void createInstance()
@@ -136,6 +143,18 @@ public class AdTapsyIOS : MonoBehaviour
 		AdTapsySetUserIdentifier(userId);
 		#endif
 	}
+
+	public static void SetUserSubjectToGdpr(bool value){
+        #if UNITY_IPHONE  && !UNITY_EDITOR
+        AdTapsySetUserSubjectToGdpr(value);
+        #endif
+    }
+
+    public static void SetConsentGrantedGdpr(bool value){
+        #if UNITY_IPHONE  && !UNITY_EDITOR
+        AdTapsySetConsentGrantedGdpr(value);
+        #endif
+    }
 
 
 #if UNITY_IPHONE && !UNITY_EDITOR

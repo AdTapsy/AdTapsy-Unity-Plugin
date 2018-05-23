@@ -100,6 +100,16 @@ void AdTapsySetUserIdentifier(const char* userId) {
     [AdTapsy setUserIdentifier: CreateNSString(userId)];
 }
 
+void AdTapsySetUserSubjectToGdpr(BOOL value) {
+    printf("[AdTapsy Unity] Set User Subject to GDPR\n");
+    [AdTapsy setUserSubjectToGdpr: value];
+}
+
+void AdTapsySetConsentGrantedGdpr(BOOL value) {
+    printf("[AdTapsy Unity] Set Consent Granted GDPR\n");
+    [AdTapsy setConsentGrantedGdpr: value];
+}
+
 
 @implementation AdTapsyDelegateImpl
 

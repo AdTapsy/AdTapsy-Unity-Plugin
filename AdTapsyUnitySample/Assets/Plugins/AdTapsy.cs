@@ -30,7 +30,7 @@ public class AdTapsy : MonoBehaviour {
 	public static void StartSessionIOS(string appId) {
 #if UNITY_IPHONE && !UNITY_EDITOR
 		AdTapsyIOS.StartSession (appId);
-#endif	
+#endif
 	}
 
 	public static void SetTestMode(bool enabled, params string[] testDevices){
@@ -41,7 +41,7 @@ public class AdTapsy : MonoBehaviour {
 		AdTapsyIOS.SetTestMode(enabled, testDevices);
 #endif
 	}
- 
+
 	public static void ShowInterstitial(){
 #if UNITY_ANDROID  && !UNITY_EDITOR
 		AdTapsyAndroid.ShowInterstitial();
@@ -50,7 +50,7 @@ public class AdTapsy : MonoBehaviour {
 		AdTapsyIOS.ShowInterstitial ();
 #endif
 	}
-	
+
 	public static bool IsInterstitialReadyToShow(){
 #if UNITY_ANDROID  && !UNITY_EDITOR
 		return AdTapsyAndroid.IsInterstitialReadyToShow();
@@ -69,7 +69,7 @@ public class AdTapsy : MonoBehaviour {
 		AdTapsyIOS.ShowRewardedVideo ();
 #endif
 	}
-	
+
 	public static bool IsRewardedVideoReadyToShow(){
 #if UNITY_ANDROID  && !UNITY_EDITOR
 		return AdTapsyAndroid.IsRewardedVideoReadyToShow();
@@ -81,7 +81,7 @@ public class AdTapsy : MonoBehaviour {
 #endif
 	}
 
-	
+
 	public static bool CloseAd(){
 #if UNITY_ANDROID  && !UNITY_EDITOR
 		return AdTapsyAndroid.CloseAd();
@@ -121,4 +121,20 @@ public class AdTapsy : MonoBehaviour {
 		AdTapsyIOS.SetRewardedVideoPrePopupEnabled(toShow);
 #endif
 	}
+  public static void SetUserSubjectToGdpr(bool value){
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AdTapsyAndroid.SetUserSubjectToGdpr(value);
+#endif
+#if UNITY_IPHONE && !UNITY_EDITOR
+        AdTapsyIOS.SetUserSubjectToGdpr(value);
+#endif
+}
+public static void SetConsentGrantedGdpr(bool value){
+#if UNITY_ANDROID && !UNITY_EDITOR
+        AdTapsyAndroid.SetConsentGrantedGdpr(value);
+#endif
+#if UNITY_IPHONE && !UNITY_EDITOR
+        AdTapsyIOS.SetConsentGrantedGdpr(value);
+#endif
+    }
 }

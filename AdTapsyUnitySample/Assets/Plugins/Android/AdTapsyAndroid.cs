@@ -76,6 +76,18 @@ public static class AdTapsyAndroid {
 		getAdTapsy().CallStatic("setRewardedVideoPostPopupEnabled", toShow);
 #endif
 	}
+
+    public static void SetUserSubjectToGdpr(bool value){
+#if UNITY_ANDROID  && !UNITY_EDITOR
+        getAdTapsy().CallStatic("setUserSubjectToGdpr", value);
+#endif
+    }
+    public static void SetConsentGrantedGdpr(bool value){
+#if UNITY_ANDROID  && !UNITY_EDITOR
+        getAdTapsy().CallStatic("setConsentGrantedGdpr", value);
+#endif
+    }
+
 	#if UNITY_ANDROID  && !UNITY_EDITOR
 	private static AndroidJavaObject getCurrentActivity(){
 		AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");

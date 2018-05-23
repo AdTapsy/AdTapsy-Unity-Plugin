@@ -29,6 +29,10 @@ extern "C" {
     void AdTapsySetRewardedVideoPostPopupEnabled(BOOL toShow);
 
     void AdTapsySetUserIdentifier(const char* userId);
+
+    void AdTapsySetUserSubjectToGdpr(BOOL value);
+
+    void AdTapsySetConsentGrantedGdpr(BOOL value);
 }
 
 
