@@ -1,98 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unity3d.player"
-	android:installLocation="preferExternal"
+    android:installLocation="preferExternal"
     android:versionCode="1"
     android:versionName="1.0">
-	
-	<uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	
+
     <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
+        android:anyDensity="true"
         android:largeScreens="true"
-        android:xlargeScreens="true"
-        android:anyDensity="true"/>
-   
-  <application
-		android:theme="@android:style/Theme.NoTitleBar"
-		android:icon="@drawable/app_icon"
-        android:label="@string/app_name">
-        <activity android:name="com.adtapsy.sdk.AdTapsyUnityActivity"
-                  android:label="@string/app_name">
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar">
+        <activity
+            android:name="com.adtapsy.sdk.AdTapsyUnityActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
-            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+
+            <meta-data
+                android:name="unityplayer.ForwardNativeEventsToDalvik"
+                android:value="true" />
+            <meta-data
+                android:name="unityplayer.UnityActivity"
+                android:value="true" />
         </activity>
-        
-         <meta-data
+
+        <!-- AdTapsy START -->
+
+        <!-- Google Play Services -->
+        <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-		<!-- AdTapsy START -->
-
-		<!-- InMobi Activities -->
-		<activity
-		    android:name="com.inmobi.rendering.InMobiAdActivity"
-		    android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
-		    android:hardwareAccelerated="true"
-		    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-		
-		<receiver
-		android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
-		android:enabled="true"
-		android:exported="true" >
-			<intent-filter>
-				<action android:name="com.inmobi.share.id" />
-			</intent-filter>
-		</receiver>
-
-<!-- AdColony Activities -->
-		<activity android:name="com.adcolony.sdk.AdColonyInterstitialActivity"
-		android:configChanges="keyboardHidden|orientation|screenSize"
-		android:hardwareAccelerated="true"/>
-		
-		<activity android:name="com.adcolony.sdk.AdColonyAdViewActivity"
-		android:configChanges="keyboardHidden|orientation|screenSize"
-		android:hardwareAccelerated="true"/>
-		<!-- Applovin Activities -->
-		<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
-		<activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
 
 
-		<activity
-		    android:name="com.google.android.gms.ads.AdActivity"
-		    android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-		    android:theme="@android:style/Theme.Translucent" />
+        <!-- InMobi Activities -->
+        <activity
+            android:name="com.inmobi.rendering.InMobiAdActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-		        <!-- Vungle -->
-		<activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
-		 android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
-		 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/> 
-		 <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
- android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
- android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <receiver
+            android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.inmobi.share.id" />
+            </intent-filter>
+        </receiver>
 
- 
-		<!-- RevMob -->
-		<activity
-		    android:name="com.revmob.FullscreenActivity"
-		    android:configChanges="keyboardHidden|orientation"
-		    android:theme="@android:style/Theme.Translucent" />
+        <!-- AdColony Activities -->
+        <activity
+            android:name="com.adcolony.sdk.AdColonyInterstitialActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name="com.adcolony.sdk.AdColonyAdViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="true" />
 
-		<activity android:name="com.chartboost.sdk.CBImpressionActivity"
-            	   android:excludeFromRecents="true" 
-            	   android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-                   android:configChanges="keyboardHidden|orientation|screenSize"/>
-    
-<!-- AdTapsy END -->
+        <!-- Applovin Activities -->
+        <activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
+        <activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
+
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <!-- Vungle -->
+        <activity
+            android:name="com.vungle.warren.ui.VungleActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- android-job -->
+        <service
+            android:name="com.evernote.android.job.v21.PlatformJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="com.evernote.android.job.v14.PlatformAlarmService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="com.evernote.android.job.v14.PlatformAlarmServiceExact"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.evernote.android.job.v14.PlatformAlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <!-- Keep the filter for legacy intents -->
+                <action android:name="com.evernote.android.job.v14.RUN_JOB" />
+                <action android:name="net.vrallev.android.job.v14.RUN_JOB" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.evernote.android.job.JobBootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.evernote.android.job.gcm.PlatformGcmService"
+            android:enabled="false"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.evernote.android.job.JobRescheduleService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- RevMob -->
+        <activity
+            android:name="rm.com.android.sdk.RmInterstitial"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
+        <!-- Chartboost -->
+        <activity
+            android:name="com.chartboost.sdk.CBImpressionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <!-- AdTapsy END -->
     </application>
 
 </manifest>

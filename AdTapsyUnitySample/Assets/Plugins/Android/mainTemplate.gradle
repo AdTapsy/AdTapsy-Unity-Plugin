@@ -1,0 +1,104 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        maven {
+            url 'https://jitpack.io'
+        }
+        maven {
+            url "https://adcolony.bintray.com/AdColony"
+        }
+        maven { url 'https://adtapsy.com/repo/' }
+    }
+
+    dependencies {
+        // use newer version of the plugin for newer unity/gradle versions
+        if (gradle.gradleVersion.split('\\.').first().toInteger() < 4) {
+            classpath 'com.android.tools.build:gradle:2.1.0'
+        } else {
+            classpath 'com.android.tools.build:gradle:2.3.3'
+        }
+    }
+}
+
+allprojects {
+  repositories {
+    flatDir {
+      dirs 'libs'
+    }
+    jcenter()
+    google()
+    maven {
+      url 'https://jitpack.io'
+    }
+    maven {
+      url "https://adcolony.bintray.com/AdColony"
+    }
+    maven { url 'https://adtapsy.com/repo/' }
+  }
+}
+
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26+'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    // AdTapsy
+    compile 'com.adtapsy.sdk:adtapsy:1.6'
+
+    // Google play services
+    compile 'com.google.android.gms:play-services-gcm:15.0.1'
+    compile 'com.google.android.gms:play-services-ads:15.0.1'
+    compile 'com.google.android.gms:play-services-location:15.0.1'
+    compile 'com.google.android.gms:play-services-plus:15.0.1'
+
+    // Applovin
+    compile 'com.applovin:applovin-sdk:+'
+
+    // Vungle
+    compile 'com.github.vungle:vungle-android-sdk:6.2.5'
+
+    // InMobi
+    compile 'com.inmobi.monetization:inmobi-ads:7.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:recyclerview-v7:26+'
+
+**DEPS**
+}
+
+android {
+    enforceUniquePackageName false
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
+
+    defaultConfig {
+        applicationId 'com.adtapsy.unitydemo'
+
+        minSdkVersion 21
+        targetSdkVersion 26
+
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+**SIGN**
+
+    buildTypes {
+        debug {
+            jniDebuggable true
+        }
+
+        release {
+            // Set minifyEnabled to true if you want to run ProGuard on your project
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'
+
+            **SIGNCONFIG**
+        }
+    }
+}
